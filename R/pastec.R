@@ -35,6 +35,30 @@ add_image <- function(image_path, image_id, server = pastec_server()) {
 }
 
 #' Remove image from Pastec index
+#'
+#' Remove a specific image from the Pastec index.
+#'
+#' @param image_id Integer. An image id in the Pastec index.
+#' @param server Pastec server.
+#'
+#' @return Returns TRUE on success, returns FALSE with a warning when image_id is not found.
+remove_image <- function(image_id, server = pastec_server()) {
+  # Validate image_id
+  stopifnot(is.wholenumber(image_id))
+
+  # Format url
+  destination <- paste0(server, "/index/images/", image_id)
+
+  response <- jsonify(httr::DELETE(url = destination))
+  if(response$type == "IMAGE_REMOVED") {
+    return(TRUE)
+  } else if(response$type == "IMAGE_NOT_FOUND") {
+    warning("Image ", image_id, " not found.")
+    return(FALSE)
+  } else {
+    return(FALSE)
+  }
+}
 
 #' Clear an index
 #'
