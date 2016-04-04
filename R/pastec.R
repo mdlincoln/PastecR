@@ -55,6 +55,7 @@ save_index <- function(index_path, server = pastec_server()) {
 
   response <- jsonify(httr::POST(url = destination, body = paste0('{"type":"WRITE", "index_path":', index_path, '}')))
   if(response$type == "INDEX_WRITTEN") {
+    message("Pastec index saved to disk.")
     return(TRUE)
   } else {
     warning("Index save failed.")
