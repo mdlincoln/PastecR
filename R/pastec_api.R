@@ -105,8 +105,8 @@ load_index <- function(index_path, server = pastec_server()) {
     message("Pastec index loaded.")
     return(TRUE)
   } else {
-    warning("Index load failed.")
-    return(FALSE)
+    print(response$type)
+    stop("Index file ", index_path, " not found.")
   }
 }
 
