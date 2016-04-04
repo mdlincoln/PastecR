@@ -1,3 +1,11 @@
+eval_results <- function(results) {
+  if(length(results) == 0) {
+    return(NULL)
+  } else {
+    return(results)
+  }
+}
+
 #' Parse Pastec image search results
 #'
 #' These functions access the different components of the response to a successful Pastec image query.
@@ -9,25 +17,25 @@ NULL
 #' @describeIn pastec_response A data.frame with the bounding box dimensions and origin for the match.
 #' @export
 bounding_rects <- function(pastec_response) {
-  pastec_response$bounding_rects
+  eval_results(pastec_response$bounding_rects)
 }
 
 #' @describeIn pastec_response A vector of returned IDs.
 #' @export
 image_ids <- function(pastec_response) {
-  pastec_response$image_ids
+  eval_results(pastec_response$image_ids)
 }
 
 #' @describeIn pastec_response A vector of similarity scores.
 #' @export
 scores <- function(pastec_response) {
-  pastec_response$scores
+  eval_results(pastec_response$scores)
 }
 
 #' @describeIn pastec_response A vector of tags.
 #' @export
 tags <- function(pastec_response) {
-  pastec_response$tags
+  eval_results(pastec_response$tags)
 }
 
 #' @describeIn pastec_response A data.frame with one row per search result:
@@ -40,6 +48,10 @@ tags <- function(pastec_response) {
 #' @export
 results_as_data_frame <- function(pastec_response) {
   rdf <- bounding_rects(pastec_response)
+
+  # If there are no results at all, return NULL
+  if(is.null(rdf))
+    return(NULL)
   rdf$image_id <- image_ids(pastec_response)
   rdf$scores <- scores(pastec_response)
   rdf$tags <- tags(pastec_response)
