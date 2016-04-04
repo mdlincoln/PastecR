@@ -39,6 +39,31 @@ add_image <- function(image_path, image_id, server = pastec_server()) {
 #' Clear an index
 
 #' Load an index
+#'
+#' Directs Pastec to load an image index from disk.
+#'
+#' @param index_path File contianing a Pastec index.
+#' @param server Pastec server.
+#'
+#' @return Returns TRUE on success, returns false (with a warning) on failure
+#' @export
+load_index <- function(index_path, server = pastec_server()) {
+
+  # Validate index_path
+  stopifnot(file.exists(index_path))
+
+  # Format url
+  destination <- paste0(server, "/index/io")
+
+  response <- jsonify(httr::POST(url = destination, body = paste0('{"type":"LOAD", "index_path":', index_path, '}')))
+  if(response$type == "INDEX_LOADED") {
+    message("Pastec index loaded.")
+    return(TRUE)
+  } else {
+    warning("Index load failed.")
+    return(FALSE)
+  }
+}
 
 #' Save an index
 #'
