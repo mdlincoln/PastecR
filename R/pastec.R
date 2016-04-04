@@ -41,6 +41,26 @@ add_image <- function(image_path, image_id, server = pastec_server()) {
 #' Load an index
 
 #' Save an index
+#'
+#' Directs Pastec to save its image index to a file on disk.
+#'
+#' @param index_path File the Pastec index will be saved to. (File ending should be ".dat")
+#' @param server Pastec server.
+#'
+#' @return Returns TRUE on success, returns false (with a warning) on failure
+#' @export
+save_index <- function(index_path, server = pastec_server()) {
+
+  destination <- paste0(server, "/index/io")
+
+  response <- jsonify(httr::POST(url = destination, body = paste0('{"type":"WRITE", "index_path":', index_path, '}')))
+  if(response$type == "INDEX_WRITTEN") {
+    return(TRUE)
+  } else {
+    warning("Index save failed.")
+    return(FALSE)
+  }
+}
 
 #' Search Pastec index by image
 #'
