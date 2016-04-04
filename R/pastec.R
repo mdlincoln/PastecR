@@ -37,6 +37,27 @@ add_image <- function(image_path, image_id, server = pastec_server()) {
 #' Remove image from Pastec index
 
 #' Clear an index
+#'
+#' Directs Pastec to clear the image index.
+#'
+#' @param server Pastec server.
+#'
+#' @return Returns TRUE on success, returns false (with a warning) on failure
+#' @export
+clear_index <- function(server = pastec_server()) {
+
+  # Format url
+  destination <- paste0(server, "/index/io")
+
+  response <- jsonify(httr::POST(url = destination, body = '{"type":"CLEAR"}'))
+  if(response$type == "INDEX_CLEARED") {
+    message("Pastec index cleared.")
+    return(TRUE)
+  } else {
+    warning("Index clear failed.")
+    return(FALSE)
+  }
+}
 
 #' Load an index
 #'
