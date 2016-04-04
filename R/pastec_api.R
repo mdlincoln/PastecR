@@ -153,4 +153,3 @@ search_image <- function(image_path, server = pastec_server()) {
   response <- httr::POST(url = destination, body = httr::upload_file(image_path))
   jsonify(response)
 }
-
