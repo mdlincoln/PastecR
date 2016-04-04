@@ -150,6 +150,20 @@ search_image <- function(image_path, server = pastec_server()) {
   # Format url
   destination <- paste0(server, "/index/searcher")
 
-  response <- httr::POST(url = destination, body = httr::upload_file(image_path))
-  jsonify(response)
+  response <- jsonify(httr::POST(url = destination, body = httr::upload_file(image_path)))
+
+  if(response$type == "SEARCH_RESULTS") {
+    return(response)
+  } else if(response$type == "IMAGE_NOT_DECODED") {
+    warning("Image ", image_path, " could not be decoded.")
+    return(FALSE)
+  } else if(response$type == "IMAGE_SIZE_TOO_BIG") {
+    warning("Image ", image_path, " is too big.")
+    return(FALSE)
+  } else if(response$type == "IMAGE_SIZE_TOO_SMALL") {
+    warning("Image ", image_path, " is too small.")
+    return(FALSE)
+  } else {
+    return(FALSE)
+  }
 }
