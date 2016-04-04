@@ -44,6 +44,9 @@ tags <- function(pastec_response) {
 #'   \item{\code{width}}{integer. The width of the bounding box in the matched image.}
 #'   \item{\code{x}}{integer. The origin the bounding box in the matched image.}
 #'   \item{\code{y}}{integer. The origin of the bounding box in the matched image.}
+#'   \item{\code{image_id}}{integer. The Pastec image IDs matched.}
+#'   \item{\code{scores}}{integer. The image match score.}
+#'   \item{\code{tags}}{list. A character list with any tags associated with the image.}
 #' }
 #' @export
 results_as_data_frame <- function(pastec_response) {
