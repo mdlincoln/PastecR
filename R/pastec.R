@@ -140,7 +140,7 @@ save_index <- function(index_path, server = pastec_server()) {
 #' @param image_path Path to an image to upload.
 #' @param server Pastec server.
 #'
-#' @return On a successful search, returns
+#' @return On a successful search, returns a list generated from Pastec's JSON response.
 #'
 #' @export
 search_image <- function(image_path, server = pastec_server()) {
