@@ -23,7 +23,7 @@ add_image <- function(image_path, image_id, server = pastec_server()) {
 
   # Validate image_path and image_id
   stopifnot(file.exists(image_path))
-  stopifnot(is.integer(image_id))
+  stopifnot(is.wholenumber(image_id))
 
   # Format url
   destination <- paste0(server, "/index/images/", image_id)
