@@ -156,14 +156,14 @@ search_image <- function(image_path, server = pastec_server()) {
     return(response)
   } else if(response$type == "IMAGE_NOT_DECODED") {
     warning("Image ", image_path, " could not be decoded.")
-    return(FALSE)
+    return(NULL)
   } else if(response$type == "IMAGE_SIZE_TOO_BIG") {
     warning("Image ", image_path, " is too big.")
-    return(FALSE)
+    return(NULL)
   } else if(response$type == "IMAGE_SIZE_TOO_SMALL") {
     warning("Image ", image_path, " is too small.")
-    return(FALSE)
+    return(NULL)
   } else {
-    return(FALSE)
+    return(NULL)
   }
 }
