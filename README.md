@@ -4,6 +4,7 @@ PastecR
 Wrapper for the [Pastec](http://pastec.io/) image search and recognition engine API.
 
 [Directions for building and running Pastec can be found here.](http://pastec.io/doc#setup)
+(Note that if you are trying to install Pastec on OS X or Ubuntu, you may find that [this fork does better at locating the necessary libraries.](https://github.com/mdlincoln/pastec/tree/libjson_fix))
 
 Once you have an instance of Pastec running, you can start interacting with it using PastecR.
 
