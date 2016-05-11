@@ -26,21 +26,11 @@ hosted_clear_index <- function(server) {
 }
 
 hosted_load_index <- function(index_path, server) {
-
-  # Format url
-  destination <- paste0(hosted_pastec_server_url(server), "/index/io")
-
-  # Execute call
-  jsonify(httr::POST(url = destination, body = paste0('{"type":"LOAD", "index_path":', index_path, '}'), httr::add_headers(AuthKey = server$auth_key)))
+  stop("load_index is not currently implemented for the hosted version of the Pastec API")
 }
 
 hosted_save_index <- function(index_path, server) {
-
-  # Format url
-  destination <- paste0(hosted_pastec_server_url(server), "/index/io")
-
-  # Execute call
-  jsonify(httr::POST(url = destination, body = paste0('{"type":"WRITE", "index_path":', index_path, '}'), httr::add_headers(AuthKey = server$auth_key)))
+  stop("save_index is not currently implemented for the hosted version of the Pastec API")
 }
 
 hosted_search_image <- function(image_path, server) {
