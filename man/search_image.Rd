@@ -17,4 +17,10 @@ On a successful search, returns a list generated from Pastec's JSON response.
 \description{
 Upload an image to the Pastec server to search the index for similar images.
 }
+\examples{
+\dontrun{
+ps <- pastec_server(url = "localhost", port = 4212)
+search_image("image.jpg", server = ps)
+}
+}
 

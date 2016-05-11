@@ -17,4 +17,10 @@ Returns TRUE on success, returns FALSE with a warning when image_id is not found
 \description{
 Remove a specific image from the Pastec index.
 }
+\examples{
+\dontrun{
+ps <- pastec_server(url = "localhost", port = 4212)
+remove_image(1, server = ps)
+}
+}
 

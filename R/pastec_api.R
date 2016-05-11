@@ -5,6 +5,12 @@
 #'
 #' @export
 #' @return Path to the Pastec server
+#'
+#' @examples
+#' \dontrun{
+#' ps <- pastec_server(url = "localhost", port = 4212)
+#' add_image("image.jpg", 1, server = ps)
+#' }
 pastec_server <- function(url = "localhost", port = 4212) {
   server <- paste0("http://", url, ":", port)
   check_pastec_server(server)
@@ -19,6 +25,12 @@ pastec_server <- function(url = "localhost", port = 4212) {
 #'
 #' @export
 #' @return On successful addition, silently returns list with the image id and response type.
+#'
+#' @examples
+#' \dontrun{
+#' ps <- pastec_server(url = "localhost", port = 4212)
+#' add_image("image.jpg", 1, server = ps)
+#' }
 add_image <- function(image_path, image_id, server = pastec_server()) {
 
   # Validate image_path and image_id
@@ -42,6 +54,12 @@ add_image <- function(image_path, image_id, server = pastec_server()) {
 #' @param server Pastec server.
 #'
 #' @return Returns TRUE on success, returns FALSE with a warning when image_id is not found.
+#'
+#' @examples
+#' \dontrun{
+#' ps <- pastec_server(url = "localhost", port = 4212)
+#' remove_image(1, server = ps)
+#' }
 remove_image <- function(image_id, server = pastec_server()) {
   # Validate image_id
   stopifnot(is.wholenumber(image_id))
@@ -68,6 +86,13 @@ remove_image <- function(image_id, server = pastec_server()) {
 #'
 #' @return Returns TRUE on success, returns false (with a warning) on failure
 #' @export
+#' @examples
+#' \dontrun{
+#' ps <- pastec_server(url = "localhost", port = 4212)
+#' clear_index(server = ps)
+#' #> Pastec index cleared.
+#' #> [1] TRUE
+#' }
 clear_index <- function(server = pastec_server()) {
 
   # Format url
@@ -92,6 +117,13 @@ clear_index <- function(server = pastec_server()) {
 #'
 #' @return Returns TRUE on success, returns false (with a warning) on failure
 #' @export
+#' @examples
+#' \dontrun{
+#' ps <- pastec_server(url = "localhost", port = 4212)
+#' load_index("index.dat", server = ps)
+#' #> Pastec index loaded
+#' #> [1] TRUE
+#' }
 load_index <- function(index_path, server = pastec_server()) {
 
   # Validate index_path
@@ -119,6 +151,13 @@ load_index <- function(index_path, server = pastec_server()) {
 #'
 #' @return Returns TRUE on success, returns false (with a warning) on failure
 #' @export
+#' @examples
+#' \dontrun{
+#' ps <- pastec_server(url = "localhost", port = 4212)
+#' save_index("index.dat", server = ps)
+#' #> Pastec index saved to disk.
+#' #> [1] TRUE
+#' }
 save_index <- function(index_path, server = pastec_server()) {
 
   destination <- paste0(server, "/index/io")
@@ -143,6 +182,11 @@ save_index <- function(index_path, server = pastec_server()) {
 #' @return On a successful search, returns a list generated from Pastec's JSON response.
 #'
 #' @export
+#' @examples
+#' \dontrun{
+#' ps <- pastec_server(url = "localhost", port = 4212)
+#' search_image("image.jpg", server = ps)
+#' }
 search_image <- function(image_path, server = pastec_server()) {
   # Validate image_path and image_id
   stopifnot(file.exists(image_path))

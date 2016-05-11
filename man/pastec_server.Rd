@@ -17,4 +17,10 @@ Path to the Pastec server
 \description{
 Link to a Pastec server
 }
+\examples{
+\dontrun{
+ps <- pastec_server(url = "localhost", port = 4212)
+add_image("image.jpg", 1, server = ps)
+}
+}
 

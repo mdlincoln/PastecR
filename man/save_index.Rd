@@ -17,4 +17,12 @@ Returns TRUE on success, returns false (with a warning) on failure
 \description{
 Directs Pastec to save its image index to a file on disk.
 }
+\examples{
+\dontrun{
+ps <- pastec_server(url = "localhost", port = 4212)
+save_index("index.dat", server = ps)
+#> Pastec index saved to disk.
+#> [1] TRUE
+}
+}
 

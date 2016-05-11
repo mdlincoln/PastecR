@@ -15,4 +15,12 @@ Returns TRUE on success, returns false (with a warning) on failure
 \description{
 Directs Pastec to clear the image index.
 }
+\examples{
+\dontrun{
+ps <- pastec_server(url = "localhost", port = 4212)
+clear_index(server = ps)
+#> Pastec index cleared.
+#> [1] TRUE
+}
+}
 

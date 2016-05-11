@@ -17,4 +17,12 @@ Returns TRUE on success, returns false (with a warning) on failure
 \description{
 Directs Pastec to load an image index from disk.
 }
+\examples{
+\dontrun{
+ps <- pastec_server(url = "localhost", port = 4212)
+load_index("index.dat", server = ps)
+#> Pastec index loaded
+#> [1] TRUE
+}
+}
 

@@ -19,4 +19,10 @@ On successful addition, silently returns list with the image id and response typ
 \description{
 Add image to Pastec index
 }
+\examples{
+\dontrun{
+ps <- pastec_server(url = "localhost", port = 4212)
+add_image("image.jpg", 1, server = ps)
+}
+}
 
