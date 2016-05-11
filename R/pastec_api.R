@@ -12,7 +12,7 @@
 #' ps <- pastec_server(url = "localhost", port = 4212)
 #' add_image("image.jpg", 1, server = ps)
 #' }
-add_image <- function(image_path, image_id, server = pastec_server()) {
+add_image <- function(image_path, image_id, server) {
 
   # Validate image_path and image_id
   stopifnot(file.exists(image_path))
@@ -41,7 +41,7 @@ add_image <- function(image_path, image_id, server = pastec_server()) {
 #' ps <- pastec_server(url = "localhost", port = 4212)
 #' remove_image(1, server = ps)
 #' }
-remove_image <- function(image_id, server = pastec_server()) {
+remove_image <- function(image_id, server) {
   # Validate image_id
   stopifnot(is.wholenumber(image_id))
 
@@ -74,7 +74,7 @@ remove_image <- function(image_id, server = pastec_server()) {
 #' #> Pastec index cleared.
 #' #> [1] TRUE
 #' }
-clear_index <- function(server = pastec_server()) {
+clear_index <- function(server) {
 
   # Format url
   destination <- paste0(server, "/index/io")
@@ -105,7 +105,7 @@ clear_index <- function(server = pastec_server()) {
 #' #> Pastec index loaded
 #' #> [1] TRUE
 #' }
-load_index <- function(index_path, server = pastec_server()) {
+load_index <- function(index_path, server) {
 
   # Validate index_path
   stopifnot(file.exists(index_path))
@@ -139,7 +139,7 @@ load_index <- function(index_path, server = pastec_server()) {
 #' #> Pastec index saved to disk.
 #' #> [1] TRUE
 #' }
-save_index <- function(index_path, server = pastec_server()) {
+save_index <- function(index_path, server) {
 
   destination <- paste0(server, "/index/io")
 
@@ -168,7 +168,7 @@ save_index <- function(index_path, server = pastec_server()) {
 #' ps <- pastec_server(url = "localhost", port = 4212)
 #' search_image("image.jpg", server = ps)
 #' }
-search_image <- function(image_path, server = pastec_server()) {
+search_image <- function(image_path, server) {
   # Validate image_path and image_id
   stopifnot(file.exists(image_path))
 
