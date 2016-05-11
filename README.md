@@ -1,6 +1,8 @@
 PastecR
 =======
 
+[![Travis-CI Build Status](https://travis-ci.org/mdlincoln/PastecR.svg?branch=master)](https://travis-ci.org/mdlincoln/PastecR)
+
 Wrapper for the [Pastec](http://pastec.io/) image search and recognition engine API.
 
 [Directions for building and running Pastec can be found here.](http://pastec.io/doc#setup)
