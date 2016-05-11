@@ -23,10 +23,7 @@ add_image <- function(image_path, image_id, server) {
          "open" = open_add_image,
          "hosted" = hosted_add_image)
 
-  response <- handler(image_path, image_id, server)
-
-  # Invisibly return the response
-  invisible(response)
+  handler(image_path, image_id, server)
 }
 
 #' Remove image from Pastec index
