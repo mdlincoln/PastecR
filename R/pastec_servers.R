@@ -25,11 +25,6 @@ hosted_pastec_server <- function(index_id, auth_key) {
   stopifnot(nchar(auth_key) == 20)
 
   list(type = "hosted", index_id = index_id, auth_key = auth_key)
-
-  server <- paste0("https://api.pastec.io/indexes/", index_id)
-  attr(server, "type") <- "hosted"
-  attr(server, "auth_key") <- auth_key
-  return(server)
 }
 
 # Construct the root url for a hosted Pastec server
