@@ -16,8 +16,8 @@ open_pastec_server_url <- function(pastec_server) {
 
 #' Link to a hosted Pastec server
 #'
-#' @param index_id Character. ID string of the index hosted at \href{https://api.pastec.io}.
-#' @param auth_key Character. Authentication key string for your account at \href{https://api.pastec.io}.
+#' @param index_id Character. ID string of the index hosted at \url{https://api.pastec.io}.
+#' @param auth_key Character. Authentication key string for your account at \url{https://api.pastec.io}.
 #'
 #' @export
 hosted_pastec_server <- function(index_id, auth_key) {
