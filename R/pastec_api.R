@@ -1,22 +1,3 @@
-#' Link to a Pastec server
-#'
-#' @param url Defaults to \code{localhost://}
-#' @param port Pastec default port is 4212
-#'
-#' @export
-#' @return Path to the Pastec server
-#'
-#' @examples
-#' \dontrun{
-#' ps <- pastec_server(url = "localhost", port = 4212)
-#' add_image("image.jpg", 1, server = ps)
-#' }
-pastec_server <- function(url = "localhost", port = 4212) {
-  server <- paste0("http://", url, ":", port)
-  check_pastec_server(server)
-  return(server)
-}
-
 #' Add image to Pastec index
 #'
 #' @param image_path Path to the image file
