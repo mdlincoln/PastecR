@@ -18,13 +18,15 @@ add_image <- function(image_path, image_id, server) {
   stopifnot(file.exists(image_path))
   stopifnot(is.wholenumber(image_id))
 
-  # Format url
-  destination <- paste0(server, "/index/images/", image_id)
+  # Choose handler based on server type
+  handler <- switch(server$type,
+         "open" = open_add_image,
+         "hosted" = hosted_add_image)
 
-  response <- httr::PUT(url = destination, body = httr::upload_file(image_path))
+  response <- handler(image_path, image_id, server)
 
   # Invisibly return the response
-  invisible(jsonify(response))
+  invisible(response)
 }
 
 #' Remove image from Pastec index
@@ -45,10 +47,13 @@ remove_image <- function(image_id, server) {
   # Validate image_id
   stopifnot(is.wholenumber(image_id))
 
-  # Format url
-  destination <- paste0(server, "/index/images/", image_id)
+  # Choose handler based on server type
+  handler <- switch(server$type,
+                    "open" = open_remove_image,
+                    "hosted" = hosted_remove_image)
 
-  response <- jsonify(httr::DELETE(url = destination))
+  response <- handler(image_id, server)
+
   if(response$type == "IMAGE_REMOVED") {
     return(TRUE)
   } else if(response$type == "IMAGE_NOT_FOUND") {
@@ -76,10 +81,13 @@ remove_image <- function(image_id, server) {
 #' }
 clear_index <- function(server) {
 
-  # Format url
-  destination <- paste0(server, "/index/io")
+  # Choose handler based on server type
+  handler <- switch(server$type,
+                    "open" = open_clear_index,
+                    "hosted" = hosted_clear_index)
 
-  response <- jsonify(httr::POST(url = destination, body = '{"type":"CLEAR"}'))
+  response <- handler(server)
+
   if(response$type == "INDEX_CLEARED") {
     message("Pastec index cleared.")
     return(TRUE)
@@ -113,7 +121,13 @@ load_index <- function(index_path, server) {
   # Format url
   destination <- paste0(server, "/index/io")
 
-  response <- jsonify(httr::POST(url = destination, body = paste0('{"type":"LOAD", "index_path":', index_path, '}')))
+  # Choose handler based on server type
+  handler <- switch(server$type,
+                    "open" = open_load_index,
+                    "hosted" = hosted_load_index)
+
+  response <- handler(index_path, server)
+
   if(response$type == "INDEX_LOADED") {
     message("Pastec index loaded.")
     return(TRUE)
@@ -141,9 +155,13 @@ load_index <- function(index_path, server) {
 #' }
 save_index <- function(index_path, server) {
 
-  destination <- paste0(server, "/index/io")
+  # Choose handler based on server type
+  handler <- switch(server$type,
+                    "open" = open_save_index,
+                    "hosted" = hosted_save_index)
 
-  response <- jsonify(httr::POST(url = destination, body = paste0('{"type":"WRITE", "index_path":', index_path, '}')))
+  response <- handler(index_path, server)
+
   if(response$type == "INDEX_WRITTEN") {
     message("Pastec index saved to disk.")
     return(TRUE)
@@ -172,10 +190,12 @@ search_image <- function(image_path, server) {
   # Validate image_path and image_id
   stopifnot(file.exists(image_path))
 
-  # Format url
-  destination <- paste0(server, "/index/searcher")
+  # Choose handler based on server type
+  handler <- switch(server$type,
+                    "open" = open_search_image,
+                    "hosted" = hosted_search_image)
 
-  response <- jsonify(httr::POST(url = destination, body = httr::upload_file(image_path)))
+  response <- handler(image_path, server)
 
   if(response$type == "SEARCH_RESULTS") {
     return(response)
