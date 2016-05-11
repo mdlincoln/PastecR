@@ -13,3 +13,4 @@ Imports:
     jsonlite,
     httr
 RoxygenNote: 5.0.1
+Suggests: testthat
