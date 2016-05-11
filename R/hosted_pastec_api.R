@@ -36,7 +36,7 @@ hosted_save_index <- function(index_path, server) {
 hosted_search_image <- function(image_path, server) {
 
   # Format url
-  destination <- paste0(hosted_pastec_server_url(server), "/index/searcher")
+  destination <- paste0(hosted_pastec_server_url(server), "/searcher")
 
   # Execute call
   jsonify(httr::POST(url = destination, body = httr::upload_file(image_path), httr::add_headers(AuthKey = server$auth_key)))
