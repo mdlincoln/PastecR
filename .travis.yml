@@ -1,5 +1,8 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: R
 sudo: false
 cache: packages
+before_install:
+- openssl aes-256-cbc -K $encrypted_562f29287d81_key -iv $encrypted_562f29287d81_iv
+  -in tests/testthat/hosted_index_id.rds.enc -out tests/testthat/hosted_index_id.rds -d
+- openssl aes-256-cbc -K $encrypted_562f29287d81_key -iv $encrypted_562f29287d81_iv
+  -in tests/testthat/hosted_auth_key.rds.enc -out tests/testthat/hosted_auth_key.rds -d
