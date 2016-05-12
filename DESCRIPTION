@@ -1,7 +1,7 @@
 Package: PastecR
 Type: Package
 Title: Wrapper for the Pastec Image Search and Recognition Engine API
-Version: 0.1
+Version: 0.2.0.9000
 Authors@R: person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com",
   role = c("aut", "cre"))
 Description: Functions for calling the Pastec API service running on your local
