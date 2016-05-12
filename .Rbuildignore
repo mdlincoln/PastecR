@@ -2,5 +2,5 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^appveyor\.yml$
-^hosted_keys\.rda\.enc$
-^av_hosted_keys\.rda\.enc$
+^tests/testthat/av_hosted_keys\.rda\.enc$
+^tests/testthat/hosted_keys\.rda\.enc$
