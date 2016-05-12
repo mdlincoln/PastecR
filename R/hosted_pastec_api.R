@@ -1,3 +1,5 @@
+# Handler methods for the hosted version of Pastec at https://api.pastec.io
+
 hosted_add_image <- function(image_path, image_id, server) {
 
   # Format url

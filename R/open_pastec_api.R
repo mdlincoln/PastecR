@@ -1,3 +1,5 @@
+# Handler methods for the open/self-hosted version of Pastec
+
 open_add_image <- function(image_path, image_id, server) {
 
   # Format url
