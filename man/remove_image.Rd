@@ -12,15 +12,20 @@ remove_image(image_id, server)
 \item{server}{Pastec server.}
 }
 \value{
-Returns TRUE on success, returns FALSE with a warning when image_id is not found.
+On successful addition, silently returns list with server response.
 }
 \description{
 Remove a specific image from the Pastec index.
 }
 \examples{
 \dontrun{
-ps <- pastec_server(url = "localhost", port = 4212)
-remove_image(1, server = ps)
+erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
+ps <- open_pastec_server()
+add_image(erasmus1, 1, ps)
+str(remove_image(1, ps))
+#> List of 2
+#>  $ image_id: int 1
+#>  $ type    : chr "IMAGE_REMOVED"
 }
 }
 

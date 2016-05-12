@@ -10,15 +10,15 @@ clear_index(server)
 \item{server}{Pastec server.}
 }
 \value{
-Returns TRUE on success, returns false (with a warning) on failure
+On successful addition, silently returns list with server response.
 }
 \description{
 Directs Pastec to clear the image index.
 }
 \examples{
 \dontrun{
-ps <- pastec_server(url = "localhost", port = 4212)
-clear_index(server = ps)
+ps <- open_pastec_server()
+clear_index(ps)
 #> Pastec index cleared.
 #> [1] TRUE
 }

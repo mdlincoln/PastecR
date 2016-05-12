@@ -7,7 +7,8 @@
 save_index(index_path, server)
 }
 \arguments{
-\item{index_path}{File the Pastec index will be saved to. (File ending should be ".dat")}
+\item{index_path}{File the Pastec index will be saved to. (File ending should
+be ".dat")}
 
 \item{server}{Pastec server.}
 }

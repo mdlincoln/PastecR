@@ -7,11 +7,20 @@
 hosted_pastec_server(index_id, auth_key)
 }
 \arguments{
-\item{index_id}{Character. ID string of the index hosted at \url{https://api.pastec.io}.}
+\item{index_id}{Character. ID string of the index hosted at
+\url{https://api.pastec.io}.}
 
-\item{auth_key}{Character. Authentication key string for your account at \url{https://api.pastec.io}.}
+\item{auth_key}{Character. Authentication key string for your account at
+\url{https://api.pastec.io}.}
+}
+\value{
+A list with the attributes of the server connection
 }
 \description{
-Link to a hosted Pastec server
+Your \code{index_id} and \code{auth_key} can be found at
+\url{https://api.pastec.io/manager/apiPage} once you make an account.
+}
+\seealso{
+\link{open_pastec_server}
 }
 

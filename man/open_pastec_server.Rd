@@ -11,7 +11,13 @@ open_pastec_server(url = "localhost", port = 4212)
 
 \item{port}{Pastec default port is 4212}
 }
+\value{
+A list with the attributes of the server connection
+}
 \description{
 Link to a self-run Pastec server
+}
+\seealso{
+\link{hosted_pastec_server}
 }
 

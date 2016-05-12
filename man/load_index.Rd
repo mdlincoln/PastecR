@@ -12,15 +12,15 @@ load_index(index_path, server)
 \item{server}{Pastec server.}
 }
 \value{
-Returns TRUE on success, returns false (with a warning) on failure
+On successful addition, silently returns list with server response.
 }
 \description{
 Directs Pastec to load an image index from disk.
 }
 \examples{
 \dontrun{
-ps <- pastec_server(url = "localhost", port = 4212)
-load_index("index.dat", server = ps)
+ps <- open_pastec_server()
+load_index("index.dat", ps)
 #> Pastec index loaded
 #> [1] TRUE
 }
