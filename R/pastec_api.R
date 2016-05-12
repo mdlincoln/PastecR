@@ -180,7 +180,7 @@ save_index <- function(index_path, server) {
 #' add_image(erasmus2, 2, ps)
 #' search_results <- search_image(erasmus1, ps)
 #'
-#' #' results_as_data_frame(search_results)
+#' results_as_data_frame(search_results)
 #' #>   height width  x   y image_id scores tags
 #' #> 1    827   592 53 142        1    964   NA
 #' #> 2    803   567 64 159        3     62   NA
