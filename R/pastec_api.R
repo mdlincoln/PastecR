@@ -40,13 +40,18 @@ add_image <- function(image_path, image_id, server) {
 #' @param image_id Integer. An image id in the Pastec index.
 #' @param server Pastec server.
 #'
-#' @return Returns TRUE on success, returns FALSE with a warning when image_id is not found.
+#' @return On successful addition, silently returns list with server response.
 #'
 #' @export
 #' @examples
 #' \dontrun{
-#' ps <- pastec_server(url = "localhost", port = 4212)
-#' remove_image(1, server = ps)
+#' erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
+#' ps <- open_pastec_server()
+#' add_image(erasmus1, 1, ps)
+#' str(remove_image(1, ps))
+#' #> List of 2
+#' #>  $ image_id: int 1
+#' #>  $ type    : chr "IMAGE_REMOVED"
 #' }
 remove_image <- function(image_id, server) {
   # Validate image_id
