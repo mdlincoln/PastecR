@@ -13,7 +13,7 @@ hosted_remove_image <- function(image_id, server) {
   destination <- paste0(hosted_pastec_server_url(server), "/images/", image_id)
 
   # Execute call
-  jsonify(httr::DELETE(url = destination), httr::add_headers(AuthKey = server$auth_key))
+  jsonify(httr::DELETE(url = destination, httr::add_headers(AuthKey = server$auth_key)))
 }
 
 hosted_clear_index <- function(server) {
