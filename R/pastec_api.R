@@ -163,11 +163,26 @@ save_index <- function(index_path, server) {
 #'
 #' @return On a successful search, returns a list generated from Pastec's JSON response.
 #'
+#' @seealso \link{pastec_response}
+#'
 #' @export
 #' @examples
 #' \dontrun{
-#' ps <- pastec_server(url = "localhost", port = 4212)
-#' search_image("image.jpg", server = ps)
+#' nightwatch <- system.file("img", "SK-C-5.jpg", package = "PastecR")
+#' erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
+#' erasmus2 <- system.file("img", "RP-P-1906-1486.jpg", package = "PastecR")
+#' erasmus3 <- system.file("img", "RP-P-1906-1487.jpg", package = "PastecR")
+#'
+#' ps <- open_pastec_server()
+#' add_image(erasmus1, 1, ps)
+#' add_image(erasmus2, 2, ps)
+#' search_results <- search_image(erasmus1, ps)
+#'
+#' #' results_as_data_frame(search_results)
+#' #>   height width  x   y image_id scores tags
+#' #> 1    827   592 53 142        1    964   NA
+#' #> 2    803   567 64 159        3     62   NA
+#' #> 3    796   575 56 173        2     59   NA
 #' }
 search_image <- function(image_path, server) {
   # Validate image_path and image_id
