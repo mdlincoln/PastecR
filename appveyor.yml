@@ -45,5 +45,5 @@ artifacts:
     name: Bits
 
 environment:
-  my_variable:
-    my_secret: Yf2+LiwlH7ju66r4Wra6ug==
+  my_secret:
+    secure: Yf2+LiwlH7ju66r4Wra6ug==
