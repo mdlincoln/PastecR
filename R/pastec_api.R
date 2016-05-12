@@ -23,7 +23,8 @@ add_image <- function(image_path, image_id, server) {
          "open" = open_add_image,
          "hosted" = hosted_add_image)
 
-  handler(image_path, image_id, server)
+  response <- handler(image_path, image_id, server)
+  response_handler(response)
 }
 
 #' Remove image from Pastec index
@@ -51,15 +52,7 @@ remove_image <- function(image_id, server) {
                     "hosted" = hosted_remove_image)
 
   response <- handler(image_id, server)
-
-  if(response$type == "IMAGE_REMOVED") {
-    return(TRUE)
-  } else if(response$type == "IMAGE_NOT_FOUND") {
-    warning("Image ", image_id, " not found.")
-    return(FALSE)
-  } else {
-    return(FALSE)
-  }
+  response_handler(response)
 }
 
 #' Clear an index
@@ -85,14 +78,7 @@ clear_index <- function(server) {
                     "hosted" = hosted_clear_index)
 
   response <- handler(server)
-
-  if(response$type == "INDEX_CLEARED") {
-    message("Pastec index cleared.")
-    return(TRUE)
-  } else {
-    warning("Index clear failed.")
-    return(FALSE)
-  }
+  response_handler(response)
 }
 
 #' Load an index
@@ -125,14 +111,7 @@ load_index <- function(index_path, server) {
                     "hosted" = hosted_load_index)
 
   response <- handler(index_path, server)
-
-  if(response$type == "INDEX_LOADED") {
-    message("Pastec index loaded.")
-    return(TRUE)
-  } else {
-    print(response$type)
-    stop("Index file ", index_path, " not found.")
-  }
+  response_handler(response)
 }
 
 #' Save an index
@@ -159,14 +138,7 @@ save_index <- function(index_path, server) {
                     "hosted" = hosted_save_index)
 
   response <- handler(index_path, server)
-
-  if(response$type == "INDEX_WRITTEN") {
-    message("Pastec index saved to disk.")
-    return(TRUE)
-  } else {
-    warning("Index save failed.")
-    return(FALSE)
-  }
+  response_handler(response)
 }
 
 #' Search Pastec index by image
@@ -194,19 +166,5 @@ search_image <- function(image_path, server) {
                     "hosted" = hosted_search_image)
 
   response <- handler(image_path, server)
-
-  if(response$type == "SEARCH_RESULTS") {
-    return(response)
-  } else if(response$type == "IMAGE_NOT_DECODED") {
-    warning("Image ", image_path, " could not be decoded.")
-    return(NULL)
-  } else if(response$type == "IMAGE_SIZE_TOO_BIG") {
-    warning("Image ", image_path, " is too big.")
-    return(NULL)
-  } else if(response$type == "IMAGE_SIZE_TOO_SMALL") {
-    warning("Image ", image_path, " is too small.")
-    return(NULL)
-  } else {
-    return(NULL)
-  }
+  withVisible(response_handler(response))$value
 }
