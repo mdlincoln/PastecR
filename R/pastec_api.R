@@ -5,12 +5,18 @@
 #' @param server Pastec server
 #'
 #' @export
-#' @return On successful addition, silently returns list with the image id and response type.
+#' @return On successful addition, silently returns list with server response.
 #'
 #' @examples
 #' \dontrun{
-#' ps <- pastec_server(url = "localhost", port = 4212)
-#' add_image("image.jpg", 1, server = ps)
+#'
+#' erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
+#' ps <- open_pastec_server()
+#' str(add_image(erasmus1, 1, ps))
+#' #> List of 3
+#' #>  $ image_id             : int 1
+#' #>  $ nb_features_extracted: int 1721
+#' #>  $ type                 : chr "IMAGE_ADDED"
 #' }
 add_image <- function(image_path, image_id, server) {
 
