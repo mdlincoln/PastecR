@@ -8,9 +8,9 @@ init:
         Import-Module '..\appveyor-tool.ps1'
 
 install:
-  ps: Bootstrap
   - nuget install secure-file -ExcludeVersion
   - secure-file\tools\secure-file -decrypt tests/testthat/av_hosted_keys.rda.enc -secret %my_secret% -out tests/testthat/hosted_keys.rda
+  ps: Bootstrap
 
 
 # Adapt as necessary starting from here
