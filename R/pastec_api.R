@@ -35,6 +35,7 @@ add_image <- function(image_path, image_id, server) {
 #'
 #' @return Returns TRUE on success, returns FALSE with a warning when image_id is not found.
 #'
+#' @export
 #' @examples
 #' \dontrun{
 #' ps <- pastec_server(url = "localhost", port = 4212)
