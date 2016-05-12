@@ -2,5 +2,4 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^appveyor\.yml$
-^hosted_auth_key\.rds\.enc$
-^hosted_index_id\.rds\.enc$
+^hosted_keys\.rda\.enc$

@@ -2,5 +2,4 @@
 .Rhistory
 .RData
 *.Rproj
-hosted_auth_key.rds
-hosted_index_id.rds
+hosted_keys.rda

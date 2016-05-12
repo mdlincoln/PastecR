@@ -6,8 +6,7 @@ erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
 erasmus2 <- system.file("img", "RP-P-1906-1486.jpg", package = "PastecR")
 erasmus3 <- system.file("img", "RP-P-1906-1487.jpg", package = "PastecR")
 
-test_index_id <- readRDS("hosted_index_id.rds")
-test_auth_key <- readRDS("hosted_auth_key.rds")
+load("hosted_keys.rda")
 
 hps <- hosted_pastec_server(test_index_id, test_auth_key)
 
