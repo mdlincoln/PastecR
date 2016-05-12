@@ -30,7 +30,7 @@ open_pastec_server_url <- function(pastec_server) {
 #'
 #' @return A list with the attributes of the server connection
 #'
-#' @seealso \likn{open_pastec_server}
+#' @seealso \link{open_pastec_server}
 #'
 #' @export
 hosted_pastec_server <- function(index_id, auth_key) {
