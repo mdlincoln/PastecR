@@ -4,3 +4,4 @@
 ^appveyor\.yml$
 ^tests/testthat/av_hosted_keys\.rda\.enc$
 ^tests/testthat/hosted_keys\.rda\.enc$
+^secure-file/*$
