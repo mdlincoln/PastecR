@@ -46,4 +46,4 @@ artifacts:
 
 environment:
   my_variable:
-    secure: Yf2+LiwlH7ju66r4Wra6ug==
+    my_secret: Yf2+LiwlH7ju66r4Wra6ug==
