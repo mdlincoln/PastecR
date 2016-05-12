@@ -131,7 +131,8 @@ load_index <- function(index_path, server) {
 #'
 #' Directs Pastec to save its image index to a file on disk.
 #'
-#' @param index_path File the Pastec index will be saved to. (File ending should be ".dat")
+#' @param index_path File the Pastec index will be saved to. (File ending should
+#'   be ".dat")
 #' @param server Pastec server.
 #'
 #' @return Returns TRUE on success, returns false (with a warning) on failure
@@ -161,7 +162,8 @@ save_index <- function(index_path, server) {
 #' @param image_path Path to an image to upload.
 #' @param server Pastec server.
 #'
-#' @return On a successful search, returns a list generated from Pastec's JSON response.
+#' @return On a successful search, returns a list generated from Pastec's JSON
+#'   response.
 #'
 #' @seealso \link{pastec_response}
 #'
