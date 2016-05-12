@@ -4,8 +4,8 @@ Title: Wrapper for the Pastec Image Search and Recognition Engine API
 Version: 0.2.0.9000
 Authors@R: person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com",
   role = c("aut", "cre"))
-Description: Functions for calling the Pastec API service running on your local
-    machine.
+Description: Call the Pastec API service, either running on your local machine
+  or the hosted instance at https://api.pastec.io.
 License: MIT + file LICENSE
 LazyData: TRUE
 Depends: R (>= 3.0.1)
