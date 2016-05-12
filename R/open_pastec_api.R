@@ -33,7 +33,7 @@ open_load_index <- function(index_path, server) {
   destination <- paste0(open_pastec_server_url(server), "/index/io")
 
   # Execute call
-  jsonify(httr::POST(url = destination, body = paste0('{"type":"LOAD", "index_path":', index_path, '}')))
+  jsonify(httr::POST(url = destination, body = paste0('{"type":"LOAD", "index_path":"', index_path, '"}')))
 }
 
 open_save_index <- function(index_path, server) {
@@ -42,7 +42,7 @@ open_save_index <- function(index_path, server) {
   destination <- paste0(open_pastec_server_url(server), "/index/io")
 
   # Execute call
-  jsonify(httr::POST(url = destination, body = paste0('{"type":"WRITE", "index_path":', index_path, '}')))
+  jsonify(httr::POST(url = destination, body = paste0('{"type":"WRITE", "index_path":"', index_path, '"}')))
 }
 
 open_search_image <- function(image_path, server) {
