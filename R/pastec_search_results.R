@@ -35,7 +35,8 @@ scores <- function(pastec_response) {
 #' @describeIn pastec_response A vector of tags.
 #' @export
 tags <- function(pastec_response) {
-  eval_results(pastec_response$tags)
+  t <- eval_results(pastec_response$tags)
+  ifelse(t == "", NA, t)
 }
 
 #' @describeIn pastec_response A data.frame with one row per search result:
