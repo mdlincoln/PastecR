@@ -77,3 +77,10 @@ test_that("Remove images from hosted Pastec server", {
   search_nw <- search_image(nightwatch, hps)
   expect_null(image_ids(search_nw))
 })
+
+test_that("Save and load index", {
+  # These methods are not currently implemented for the hosted version, and
+  # should error out
+  expect_error(save_index(".", hps))
+  expect_error(load_index("LICENSE", hps))
+})
