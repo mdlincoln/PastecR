@@ -61,6 +61,7 @@ results_nw <- data.frame(
   stringsAsFactors = FALSE)
 
 test_that("Search by image", {
+  skip("api.pastec.io author contacted - API as documented does not work")
   search_e1 <- search_image(erasmus1, hps)
   expect_equivalent(results_as_data_frame(search_e1), results_e1)
   expect_equivalent(bounding_rects(search_e1), results_e1[,1:4])
@@ -73,6 +74,7 @@ test_that("Search by image", {
 })
 
 test_that("Remove images from hosted Pastec server", {
+  skip("api.pastec.io author contacted - API as documented does not work")
   expect_equal(remove_image(4, hps)$type, "IMAGE_REMOVED")
   search_nw <- search_image(nightwatch, hps)
   expect_null(image_ids(search_nw))
