@@ -85,3 +85,16 @@ test_that("Remove images from hosted Pastec server", {
   search_nw <- search_image(nightwatch, ops)
   expect_null(image_ids(search_nw))
 })
+
+test_that("Save and load index", {
+  skip_on_travis()
+  skip_on_appveyor()
+
+  index_path <- paste0(getwd(), "/tempindex.dat")
+  expect_equal(save_index(index_path, ops)$type, "INDEX_WRITTEN")
+  clear_index(ops)
+  expect_equal(load_index(index_path, ops)$type, "INDEX_LOADED")
+  unlink(index_path)
+  search_e1 <- search_image(erasmus1, ops)
+  expect_equivalent(results_as_data_frame(search_e1), results_e1)
+})
