@@ -1,24 +1,13 @@
-PastecR
-=======
-
-[![Travis-CI Build Status](https://travis-ci.org/mdlincoln/PastecR.svg?branch=master)](https://travis-ci.org/mdlincoln/PastecR) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/mdlincoln/PastecR?branch=master&svg=true)](https://ci.appveyor.com/project/mdlincoln/PastecR)
-
-Wrapper for the [Pastec](http://pastec.io/) image search and recognition engine API.
-
-[Directions for building and running Pastec can be found here.](http://pastec.io/doc#setup)
-(Note that if you are trying to install Pastec on OS X or Ubuntu, you may find that [this fork does better at locating the necessary libraries.](https://github.com/mdlincoln/pastec/tree/libjson_fix))
-
-Once you have an instance of Pastec running, you can start interacting with it using PastecR.
-
-## Installation
-
-```r
-# install.packages("devtools")
-devtools::install_github("mdlincoln/PastecR")
-library(PastecR)
-```
-
-## Usage
+---
+title: "Using the Pastec API with PastecR"
+author: "Matthew Lincoln"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 [Pastec](http://pastec.io/) is an [open-source](https://github.com/Visu4link/Pastec) image matching engine that does Google-images-esque fuzzy searching of a database of images that you compile.
 It is very good at finding close-but-not-exact matches, such as different versions of a photograph, or rotated, cropped, or resized versions of images.
@@ -30,8 +19,7 @@ PastecR provides a wrapper around the Pastec API, which can be particularly usef
 You can [compile and run](http://pastec.io/doc/oss/) Pastec yourself, however there is also a hosted version available with both a free and a paid option at <https://api.pastec.io>.
 PastecR supports both options:
 
-
-```r
+```{r pastec_server}
 library(PastecR)
 
 # open_pastec_server defaults to the same port defaults as Pastec
@@ -54,8 +42,7 @@ We'll be using a number of artowrks for this example, including three different 
 Once you have established either your own instance of Pastec, or an account at <https://api.pastec.io>, you may add images with the `add_image()` command.
 You must set an integer `image_id` when adding.
 
-
-```r
+```{r add_image}
 # Get image paths
 erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
 erasmus2 <- system.file("img", "RP-P-1906-1486.jpg", package = "PastecR")
@@ -73,17 +60,9 @@ remove_image(4, ops)
 
 Once your index is loaded, you can search for similar images, and parse the results with a number of helper commands.
 
-
-```r
+```{r search_image}
 search_result <- search_image(erasmus1, ops)
 results_as_data_frame(search_result)
-```
-
-```
-##   height width  x   y image_id scores tags
-## 1    827   592 53 142        1    964   NA
-## 2    803   567 64 159        3     62   NA
-## 3    796   575 56 173        2     59   NA
 ```
 
 See `?pastec_response` for other parsing functions.
@@ -93,6 +72,3 @@ See `?pastec_response` for other parsing functions.
 To clear the index, use `clear_index(server)`.
 On the open, self-hosted version of Pastec, you can also save and load index files to disk by using `save_index()` and `load_index()`.
 At the moment, these commands are not available for the SaaS version of pasted, and will throw an error.
-
----
-[Matthew Lincoln](http://matthewlincoln.net)
