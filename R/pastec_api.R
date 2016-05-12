@@ -100,12 +100,13 @@ clear_index <- function(server) {
 #' @param index_path File contianing a Pastec index.
 #' @param server Pastec server.
 #'
-#' @return Returns TRUE on success, returns false (with a warning) on failure
+#' @return On successful addition, silently returns list with server response.
+#'
 #' @export
 #' @examples
 #' \dontrun{
-#' ps <- pastec_server(url = "localhost", port = 4212)
-#' load_index("index.dat", server = ps)
+#' ps <- open_pastec_server()
+#' load_index("index.dat", ps)
 #' #> Pastec index loaded
 #' #> [1] TRUE
 #' }
