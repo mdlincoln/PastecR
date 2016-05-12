@@ -11,8 +11,7 @@ load("hosted_keys.rda")
 hps <- hosted_pastec_server(test_index_id, test_auth_key)
 
 test_that("Clear index", {
-  expect_true(clear_index(hps))
-  expect_message(clear_index(hps), regexp = "Pastec index cleared")
+  expect_equivalent(clear_index(hps)$type, "INDEX_CLEARED")
 })
 
 test_that("Add images to hosted Pastec server", {
@@ -48,7 +47,7 @@ results_e1 <- data.frame(
   y = c(142, 159, 173),
   image_id = c(1, 3, 2),
   scores = c(964, 62, 59),
-  tags = c("", "", ""),
+  tags = c(NA, NA, NA),
   stringsAsFactors = FALSE)
 
 results_nw <- data.frame(
@@ -58,12 +57,16 @@ results_nw <- data.frame(
   y = 324,
   image_id = 4,
   scores = 788,
-  tags = "",
+  tags = NA,
   stringsAsFactors = FALSE)
 
 test_that("Search by image", {
   search_e1 <- search_image(erasmus1, hps)
   expect_equivalent(results_as_data_frame(search_e1), results_e1)
+  expect_equivalent(bounding_rects(search_e1), results_e1[,1:4])
+  expect_equivalent(image_ids(search_e1), results_e1$image_id)
+  expect_equivalent(scores(search_e1), results_e1$scores)
+  expect_equivalent(tags(search_e1), results_e1$tags)
 
   search_nw <- search_image(nightwatch, hps)
   expect_equivalent(results_as_data_frame(search_nw), results_nw)
