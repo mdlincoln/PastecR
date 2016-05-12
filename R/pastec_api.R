@@ -72,12 +72,13 @@ remove_image <- function(image_id, server) {
 #'
 #' @param server Pastec server.
 #'
-#' @return Returns TRUE on success, returns false (with a warning) on failure
+#' @return On successful addition, silently returns list with server response.
+#'
 #' @export
 #' @examples
 #' \dontrun{
-#' ps <- pastec_server(url = "localhost", port = 4212)
-#' clear_index(server = ps)
+#' ps <- open_pastec_server()
+#' clear_index(ps)
 #' #> Pastec index cleared.
 #' #> [1] TRUE
 #' }
