@@ -73,7 +73,7 @@ test_that("Search by image", {
 })
 
 test_that("Remove images from hosted Pastec server", {
-  expect_true(remove_image(1, hps))
+  expect_equal(remove_image(4, hps)$type, "IMAGE_REMOVED")
   search_nw <- search_image(nightwatch, hps)
   expect_null(image_ids(search_nw))
 })

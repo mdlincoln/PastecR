@@ -81,7 +81,7 @@ test_that("Remove images from hosted Pastec server", {
   skip_on_travis()
   skip_on_appveyor()
 
-  expect_true(remove_image(4, ops))
+  expect_equal(remove_image(4, ops)$type, "IMAGE_REMOVED")
   search_nw <- search_image(nightwatch, ops)
   expect_null(image_ids(search_nw))
 })
