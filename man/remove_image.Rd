@@ -4,7 +4,7 @@
 \alias{remove_image}
 \title{Remove image from Pastec index}
 \usage{
-remove_image(image_id, server = pastec_server())
+remove_image(image_id, server)
 }
 \arguments{
 \item{image_id}{Integer. An image id in the Pastec index.}

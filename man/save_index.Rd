@@ -4,7 +4,7 @@
 \alias{save_index}
 \title{Save an index}
 \usage{
-save_index(index_path, server = pastec_server())
+save_index(index_path, server)
 }
 \arguments{
 \item{index_path}{File the Pastec index will be saved to. (File ending should be ".dat")}

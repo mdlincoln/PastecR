@@ -4,7 +4,7 @@
 \alias{search_image}
 \title{Search Pastec index by image}
 \usage{
-search_image(image_path, server = pastec_server())
+search_image(image_path, server)
 }
 \arguments{
 \item{image_path}{Path to an image to upload.}

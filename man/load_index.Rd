@@ -4,7 +4,7 @@
 \alias{load_index}
 \title{Load an index}
 \usage{
-load_index(index_path, server = pastec_server())
+load_index(index_path, server)
 }
 \arguments{
 \item{index_path}{File contianing a Pastec index.}

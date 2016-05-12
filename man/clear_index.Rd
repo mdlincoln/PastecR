@@ -4,7 +4,7 @@
 \alias{clear_index}
 \title{Clear an index}
 \usage{
-clear_index(server = pastec_server())
+clear_index(server)
 }
 \arguments{
 \item{server}{Pastec server.}

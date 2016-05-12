@@ -4,7 +4,7 @@
 \alias{add_image}
 \title{Add image to Pastec index}
 \usage{
-add_image(image_path, image_id, server = pastec_server())
+add_image(image_path, image_id, server)
 }
 \arguments{
 \item{image_path}{Path to the image file}
