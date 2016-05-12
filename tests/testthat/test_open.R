@@ -21,6 +21,7 @@ test_that("Clear index", {
 test_that("Add images to hosted Pastec server", {
   skip_on_travis()
   skip_on_appveyor()
+  skip_on_cran()
 
   res_e1 <- add_image(erasmus1, 1, ops)
   expect_equal(res_e1$image_id, 1)
@@ -65,6 +66,7 @@ results_nw <- data.frame(
 test_that("Search by image", {
   skip_on_travis()
   skip_on_appveyor()
+  skip_on_cran()
 
   search_e1 <- search_image(erasmus1, ops)
   expect_equivalent(results_as_data_frame(search_e1), results_e1)
@@ -80,6 +82,7 @@ test_that("Search by image", {
 test_that("Remove images from hosted Pastec server", {
   skip_on_travis()
   skip_on_appveyor()
+  skip_on_cran()
 
   expect_equal(remove_image(4, ops)$type, "IMAGE_REMOVED")
   search_nw <- search_image(nightwatch, ops)
@@ -89,6 +92,7 @@ test_that("Remove images from hosted Pastec server", {
 test_that("Save and load index", {
   skip_on_travis()
   skip_on_appveyor()
+  skip_on_cran()
 
   index_path <- paste0(getwd(), "/tempindex.dat")
   expect_equal(save_index(index_path, ops)$type, "INDEX_WRITTEN")
