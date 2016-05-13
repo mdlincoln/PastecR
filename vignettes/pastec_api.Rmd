@@ -11,6 +11,9 @@ vignette: >
 
 ```{r setup, include=FALSE}
 NOT_CRAN <- identical(tolower(Sys.getenv("NOT_CRAN")), "true")
+NOT_TRAVIS <- !identical(Sys.getenv("TRAVIS"), "true")
+NOT_APPVEYOR <- !identical(Sys.getenv("APPVEYOR"), "True")
+RUN_CHUNK <- all(NOT_CRAN, NOT_TRAVIS, NOT_APPVEYOR)
 ```
 
 [Pastec](http://pastec.io/) is an [open-source](https://github.com/Visu4link/Pastec) image matching engine that does Google-images-esque fuzzy searching of a database of images that you compile.
@@ -46,7 +49,7 @@ We'll be using a number of artowrks for this example, including three different 
 Once you have established either your own instance of Pastec, or an account at <https://api.pastec.io>, you may add images with the `add_image()` command.
 You must set an integer `image_id` when adding.
 
-```{r add_image, eval=NOT_CRAN, purl=NOT_CRAN}
+```{r add_image, eval=RUN_CHUNK, purl=RUN_CHUNK}
 # Get image paths
 erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
 erasmus2 <- system.file("img", "RP-P-1906-1486.jpg", package = "PastecR")
@@ -64,7 +67,7 @@ remove_image(4, ops)
 
 Once your index is loaded, you can search for similar images, and parse the results with a number of helper commands.
 
-```{r search_image, eval=NOT_CRAN, purl=NOT_CRAN}
+```{r search_image, eval=RUN_CHUNK, purl=RUN_CHUNK}
 search_result <- search_image(erasmus1, ops)
 results_as_data_frame(search_result)
 ```
