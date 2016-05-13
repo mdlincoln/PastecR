@@ -6,15 +6,18 @@ erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
 erasmus2 <- system.file("img", "RP-P-1906-1486.jpg", package = "PastecR")
 erasmus3 <- system.file("img", "RP-P-1906-1487.jpg", package = "PastecR")
 
-load("hosted_keys.rda")
-
-hps <- hosted_pastec_server(test_index_id, test_auth_key)
-
 test_that("Clear index", {
+  skip_on_cran()
+
+  load("hosted_keys.rda")
+  hps <- hosted_pastec_server(test_index_id, test_auth_key)
+
   expect_equivalent(clear_index(hps)$type, "INDEX_CLEARED")
 })
 
 test_that("Add images to hosted Pastec server", {
+  skip_on_cran()
+
   res_e1 <- add_image(erasmus1, 1, hps)
   expect_equal(res_e1$image_id, 1)
   expect_equal(res_e1$type, "IMAGE_ADDED")
@@ -36,6 +39,8 @@ test_that("Add images to hosted Pastec server", {
 })
 
 test_that("Unimplemented functions for the hosted API return an error", {
+  skip_on_cran()
+
   expect_error(save_index("dummypath", hps))
   expect_error(load_index("dummypath", hps))
 })
@@ -61,6 +66,8 @@ results_nw <- data.frame(
   stringsAsFactors = FALSE)
 
 test_that("Search by image", {
+  skip_on_cran()
+
   skip("api.pastec.io author contacted - API as documented does not work")
   search_e1 <- search_image(erasmus1, hps)
   expect_equivalent(results_as_data_frame(search_e1), results_e1)
@@ -74,6 +81,8 @@ test_that("Search by image", {
 })
 
 test_that("Remove images from hosted Pastec server", {
+  skip_on_cran()
+
   skip("api.pastec.io author contacted - API as documented does not work")
   expect_equal(remove_image(4, hps)$type, "IMAGE_REMOVED")
   search_nw <- search_image(nightwatch, hps)
@@ -81,6 +90,8 @@ test_that("Remove images from hosted Pastec server", {
 })
 
 test_that("Save and load index", {
+  skip_on_cran()
+
   # These methods are not currently implemented for the hosted version, and
   # should error out
   expect_error(save_index(".", hps))
