@@ -6,11 +6,13 @@ erasmus1 <- system.file("img", "RP-P-1906-1485.jpg", package = "PastecR")
 erasmus2 <- system.file("img", "RP-P-1906-1486.jpg", package = "PastecR")
 erasmus3 <- system.file("img", "RP-P-1906-1487.jpg", package = "PastecR")
 
-test_that("Clear index", {
-  skip_on_cran()
-
+if (identical(Sys.getenv("NOT_CRAN"), "true")) {
   load("hosted_keys.rda")
   hps <- hosted_pastec_server(test_index_id, test_auth_key)
+}
+
+test_that("Clear index", {
+  skip_on_cran()
 
   expect_equivalent(clear_index(hps)$type, "INDEX_CLEARED")
 })
