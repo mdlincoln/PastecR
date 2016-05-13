@@ -14,6 +14,7 @@ ops <- open_pastec_server(test_url, test_port)
 test_that("Clear index", {
   skip_on_travis()
   skip_on_appveyor()
+  skip_on_cran()
 
   expect_equivalent(clear_index(ops)$type, "INDEX_CLEARED")
 })
